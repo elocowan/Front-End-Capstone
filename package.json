@@ -1,0 +1,32 @@
+{
+  "name": "Front-End-Capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -d -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/I-O-Silver/Front-End-Capstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/I-O-Silver/Front-End-Capstone/issues"
+  },
+  "homepage": "https://github.com/I-O-Silver/Front-End-Capstone#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.2.1",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0"
+  }
+}
