@@ -9,16 +9,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       products: [],
-      currentProduct: {}
+      currentProduct: {},
+      currentProductStyles: {
+        data: {
+          product_id: "",
+          results: [],
+        }
+      },
     }
   }
 
   componentDidMount() {
-    axios.get("http://52.26.193.201:3000/products/list")
-    .then((response) => {
+    Promise.all([
+      axios.get("http://52.26.193.201:3000/products/list"),
+      axios.get("http://52.26.193.201:3000/products/1/styles")
+    ])
+    .then(async([resProducts, resStyles]) => {
+      const products = await resProducts;
+      const productOneStyles = await resStyles;
       this.setState({
-        products: response,
-        currentProduct: response.data[0]
+        products: products,
+        currentProduct: products.data[0],
+        currentProductStyles: productOneStyles,
       })
     })
     .catch((err) => {console.log("axios get error: ", err)})
@@ -27,7 +39,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <CurrentProduct currentProduct={this.state.currentProduct}/>
+      <CurrentProduct currentProduct={this.state.currentProduct} currentProductStyles={this.state.currentProductStyles}/>
     )
   }
 }

@@ -1,31 +1,25 @@
 import React from 'react';
-import axios from 'axios';
 
-class CurrentProduct extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      styles: [],
-    }
-  }
+var CurrentProduct = (props) => {
 
-  componentDidMount() {
-    axios.get(`http://52.26.193.201:3000/products/1/styles`)
-    .then((response) => {
-      this.setState({
-        styles: response.data
-      })
-    })
-    .catch((err) => {console.log("axios style request err: ", err)})
-  }
+  const styles = props.currentProductStyles.data.results;
+  const styleItems = styles.map((style) => {
+    return <div key={style.style_id}>{style.name}</div>
+  })
 
-
-  render() {
-    console.log("state of current product: ", this.state)
-    return (
-      <div>{this.props.currentProduct.name}</div>
-    )
-  }
+  return (
+    <div>
+      <div>
+        <h3>{props.currentProduct.name}</h3>
+        <h3>{props.currentProduct.description}</h3>
+        <h3>{props.currentProduct.slogan}</h3>
+      </div>
+      <div>
+        <h2>these are the styles</h2>
+        <h3>{styleItems}</h3>
+      </div>
+    </div>
+  )
 }
 
 export default CurrentProduct;
