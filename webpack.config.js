@@ -1,7 +1,6 @@
-const webpack = require('webpack');
 const path = require('path');
 
-const DIST_DIR = path.resolve(__dirname, 'dist');
+const DIST_DIR = path.resolve(__dirname, 'public');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
         include: SRC_DIR,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015']
+          presets: ['@babel/preset-react', '@babel/preset-env']
         }
       }
     ]
