@@ -1,10 +1,8 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import {
-  test,
   configure,
   shallow,
-  expect,
 } from 'enzyme';
 import App from '../src/components/App';
 
